@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<!----<link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}" />-->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'music:index' %}">
+                 viber
+            </a>
+        </div>
+    </div>
+</nav>
+
+{% if all_albums %}
+  <h1>These are all albums</h1>
+  <ul>
+      {% for album in all_albums %}
+         <li><a href="{% url 'music:detail' album.id %}" >{{ album.title }}</a></li>
+      {% endfor %}
+  </ul>
+{% else %}
+  <h3>You have nothing</h3>
+{% endif %}
